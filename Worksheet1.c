@@ -37,10 +37,11 @@ void oneMoreDone(gradStudent* student) {
 }
 
 void swapSupervisors(gradStudent* student1, gradStudent* student2) {
-    char* temp = student1->supervisor;
+    gradStudent* tempStudent;
 
-    student1->supervisor = student2->supervisor;
-    student2->supervisor = temp;
+    tempStudent = student1;
+    *student1 = *student2;
+    *student2 = *tempStudent;
 }
 
 // main
