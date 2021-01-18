@@ -7,10 +7,12 @@ int main(int argc, char* argv[]) {
     Employees employee1;
     Employees employee2;
 
+    // check to make sure they gave a filename
     if (argc != 2) {
         printf("ERROR: TOO MANY OR FEW ARGUMENTS GIVEN.\n");
         return 1;
     }
+    // copy the filename to the variable
     strcpy(fileName, argv[1]);
 
     strcpy(employee1.fname, "Eric");
@@ -28,6 +30,10 @@ int main(int argc, char* argv[]) {
     employeeList[0] = employee1;
     employeeList[1] = employee2;
 
+    // print the employees info
+    printEmployees(employeeList, 2);
+
+    // save the employees info to a txt
     saveEmployees(employeeList, 2, fileName);
 
     return 0;

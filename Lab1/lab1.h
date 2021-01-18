@@ -13,3 +13,5 @@ typedef struct employee {
 
 void printEmployees(Employees[NUM_EMP], int);
 void saveEmployees(Employees[NUM_EMP], int c, char[SIZE]);
+int loadEmployees(Employees[NUM_EMP], char[SIZE]);
+void swapEmployees(Employees *, Employees *);
