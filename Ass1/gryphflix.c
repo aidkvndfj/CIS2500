@@ -20,24 +20,28 @@ int readMovies(FILE *file, char movieNames[NUMBER_MOVIES][MAX_STR]) {
     int numMovies;
     char throwAwayData[MAX_STR];
 
+    // make sure there is a file
     if (file == NULL) {
         return 0;
     }
 
+    //set num movies to 0
     numMovies = 0;
     while (!feof(file)) {
-        printf("Begining: %d\n", numMovies);
+        // if the number of movies counted, is less then the number of movies
         if (numMovies < NUMBER_MOVIES) {
+            // get the movie name and remove the newline
             fgets(movieNames[numMovies], MAX_STR, file);
             strtok(movieNames[numMovies], "\n");
         }
         else {
+            // otherwise just throw the data into a variable that won't be used else where
             fgets(throwAwayData, MAX_STR, file);
         }
         numMovies++;
-        printf("End: %d\n", numMovies);
     }
 
+    // if the number of movies counted is the same as the expected
     if (numMovies == NUMBER_MOVIES) {
         return 1;
     }
@@ -52,18 +56,26 @@ int readReviews(FILE *file, struct reviewStruct reviews[NUMBER_REVIEWERS]) {
     char tempFeedback[NUMBER_MOVIES];
     char tempReviewer[MAX_STR];
 
+    // make sure there is a file
     if (file == NULL) {
         return 0;
     }
 
     numReviews = 0;
     while (!feof(file)) {
-        printf("being Loop%d\n", numReviews);
+        //clear old values
+        strcpy(tempReviewer, "");
+        for (i = 0; i < NUMBER_MOVIES; i++) {
+            tempFeedback[i] = ' ';
+        }
+
         // scan the line and put the reivewer and the feedback into temp variables
-        fscanf(file, "%s %c %c %c", tempReviewer, &tempFeedback[0], &tempFeedback[1], &tempFeedback[2]);
+        fscanf(file, "%s", tempReviewer);
+        for (i = 0; i < NUMBER_MOVIES; i++) {
+            fscanf(file, " %c", &tempFeedback[i]);
+        }
 
         // if the number of reviews currently read is less then the number of reviewers
-
         if (numReviews < NUMBER_REVIEWERS) {
             // set the reviewer
             strcpy(reviews[numReviews].reviewer, tempReviewer);
@@ -81,11 +93,10 @@ int readReviews(FILE *file, struct reviewStruct reviews[NUMBER_REVIEWERS]) {
         }
 
         numReviews++;
-        printf("end Loop%d\n", numReviews);
     }
 
     // if the correct reviews where procesed, return 1, else return 0
-    if (numReviews == NUMBER_REVIEWERS) {
+    if (numReviews == NUMBER_REVIEWERS + 1) {
         return 1;
     }
     else {
@@ -94,7 +105,10 @@ int readReviews(FILE *file, struct reviewStruct reviews[NUMBER_REVIEWERS]) {
 }
 
 int getMostCriticalReviewers(struct reviewStruct reviews[NUMBER_REVIEWERS],
-                             char mostCriticalReviewers[NUMBER_REVIEWERS][MAX_STR]);
+                             char mostCriticalReviewers[NUMBER_REVIEWERS][MAX_STR]) {
+    printf();
+}
+
 int getMostRecommendedMovies(const char movies[NUMBER_MOVIES][MAX_STR],
                              const struct reviewStruct reviews[NUMBER_REVIEWERS],
                              char mostRecommendedMovies[NUMBER_REVIEWERS][MAX_STR]);
