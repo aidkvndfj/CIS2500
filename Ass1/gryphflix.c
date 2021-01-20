@@ -106,7 +106,49 @@ int readReviews(FILE *file, struct reviewStruct reviews[NUMBER_REVIEWERS]) {
 
 int getMostCriticalReviewers(struct reviewStruct reviews[NUMBER_REVIEWERS],
                              char mostCriticalReviewers[NUMBER_REVIEWERS][MAX_STR]) {
-    printf();
+    // Variables
+    int i;
+    int j;
+    int maxNumOfN;
+    int currNumOfN;
+    int listCounter;
+
+    // go through the reviewers and find the max number of n
+    maxNumOfN = 0;
+    // loop through reviewers
+    for (i = 0; i < NUMBER_REVIEWERS; i++) {
+        currNumOfN = 0;
+        // loop through the movies
+        for (j = 0; j < NUMBER_MOVIES; j++) {
+            if (reviews[i].feedback[j] == 0) {
+                currNumOfN++;
+            }
+        }
+        // if the current number of ns is greater the the max, replace it
+        if (currNumOfN > maxNumOfN) {
+            maxNumOfN = currNumOfN;
+        }
+    }
+
+    // Go through the reviewers again and copy the ones with the max number of ns
+    listCounter = 0;
+    // loop through the reviewers
+    for (i = 0; i < NUMBER_REVIEWERS; i++) {
+        currNumOfN = 0;
+        // loop through the movies
+        for (j = 0; j < NUMBER_MOVIES; j++) {
+            if (reviews[i].feedback[j] == 0) {
+                currNumOfN++;
+            }
+        }
+        // if the current number of ns of a review is the max, copy the name to the list.
+        if (currNumOfN == maxNumOfN) {
+            strcpy(mostCriticalReviewers[listCounter], reviews[i].reviewer);
+            listCounter++;
+        }
+    }
+
+    return listCounter;
 }
 
 int getMostRecommendedMovies(const char movies[NUMBER_MOVIES][MAX_STR],
