@@ -2,6 +2,11 @@
 #include "gryphflix.h"
 
 //-------Functions-------//
+/*This function will take in a filename as a string and attempt to create
+a FILEpointer out of it. If the file opens successfully, a FILEpointer will
+be returned. Otherwise, NULL. You will only open the file for reading, not
+writing
+*/
 FILE *openFileForReading(char *fileName) {
     // open the file
     FILE *outFile = NULL;
@@ -16,6 +21,11 @@ FILE *openFileForReading(char *fileName) {
     }
 }
 
+/*
+This function will read movie titles from a FILE pointer variable named file,
+line by line, into the movieNames2D array.The function will either return
+1(to indicate successful operation) or 0 to represent abnormal exit
+*/
 int readMovies(FILE *file, char movieNames[NUMBER_MOVIES][MAX_STR]) {
     int numMovies;
     char throwAwayData[MAX_STR];
@@ -50,6 +60,11 @@ int readMovies(FILE *file, char movieNames[NUMBER_MOVIES][MAX_STR]) {
     }
 }
 
+/*
+This function will reviews from a FILEpointer variable named file,
+line by line, into the reviewStruct array.The function will either return
+1(to indicate successful operation) or 0 to represent abnormal exit
+*/
 int readReviews(FILE *file, struct reviewStruct reviews[NUMBER_REVIEWERS]) {
     int i;
     int numReviews;
@@ -104,6 +119,14 @@ int readReviews(FILE *file, struct reviewStruct reviews[NUMBER_REVIEWERS]) {
     }
 }
 
+/*
+This function will finda list of the most critical reviewersandstore them
+in array mostCriticalReviewers.A critical reviewer isareviewer who has the
+same amount of negative recommendations as the reviewer with the most negative
+recommendations.This function will return an intrepresenting the number of
+critical reviewers and will storethe names of each critical reviewer using
+the mostCriticalReviewersarray parameter.
+*/
 int getMostCriticalReviewers(struct reviewStruct reviews[NUMBER_REVIEWERS],
                              char mostCriticalReviewers[NUMBER_REVIEWERS][MAX_STR]) {
     // Variables
@@ -151,6 +174,14 @@ int getMostCriticalReviewers(struct reviewStruct reviews[NUMBER_REVIEWERS],
     return listCounter;
 }
 
+/*
+This function will get a list of the most recommended movies. A recommended
+movie has the same amount of positive recommendations ('Y' or 'y') as the
+movie which has the most amount of positive recommendations. Like
+getMostCriticalReviewers(), this function will return an intrepresenting the number
+of recommended movies as well as return the names of each recommended movie using
+mostRecommendedMovies.
+*/
 int getMostRecommendedMovies(const char movies[NUMBER_MOVIES][MAX_STR],
                              const struct reviewStruct reviews[NUMBER_REVIEWERS],
                              char mostRecommendedMovies[NUMBER_REVIEWERS][MAX_STR]) {
@@ -202,6 +233,10 @@ int getMostRecommendedMovies(const char movies[NUMBER_MOVIES][MAX_STR],
     return listCounter;
 }
 
+/*
+This function will predict the future performance of a movie's box office sales.
+This will be based solely offa proprietary GryphCinemas™algorithm. 
+*/
 int predictMovie(const char movie[MAX_STR]) {
     int i;
     int score;
@@ -277,7 +312,13 @@ int predictMovie(const char movie[MAX_STR]) {
 }
 
 // Additional
-
+/*
+This function will enumerate a movie title's words. You will program functionality
+to count the number of words in each movie title as well as count the number of
+letters in each word. You can assume well-formatted movie titles consisting of
+only letters and spaces, where spaces are used to separate words—there will not
+be any movie titles with trailing space or any invalid input
+*/
 int enumerateMovie(const char movie[MAX_STR], int charCounts[MAX_WORDS]) {
     int i;
     int numWords;
