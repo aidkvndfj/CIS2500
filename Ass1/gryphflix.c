@@ -202,12 +202,6 @@ int getMostRecommendedMovies(const char movies[NUMBER_MOVIES][MAX_STR],
     return listCounter;
 }
 
-/*
-more then 2 words -1
-only 1 word -2
-more then one word with even number of chars +1
-same num of chars in each word +2
-*/
 int predictMovie(const char movie[MAX_STR]) {
     int i;
     int score;
@@ -247,24 +241,30 @@ int predictMovie(const char movie[MAX_STR]) {
         score -= 1;
     }
 
+    // count the words with even characters
     for (i = 0; i < numWords; i++) {
         if (numOfCharsInWords[i] % 2 == 0) {
             numWordsWithEvenChar += 1;
         }
     }
+    // if the number of words is more then 1, add 1 to score
     if (numWordsWithEvenChar > 1) {
         score += 1;
     }
 
+    // loop through the words
     for (i = 0; i < numWords - 1; i++) {
+        // if the number of characters in one of the words isn't the same as the next one, the set allwordssamechar to 0(false)
         if (numOfCharsInWords[i] != numOfCharsInWords[i + 1]) {
             allWordsSameChar = 0;
         }
     }
+    // if all words same char is 1(true) add 2 to the score
     if (allWordsSameChar == 1) {
         score += 2;
     }
 
+    // limit the score to a max of 2 and min of -2
     if (score > 2) {
         return 2;
     }
@@ -274,4 +274,28 @@ int predictMovie(const char movie[MAX_STR]) {
     else {
         return score;
     }
+}
+
+// Additional
+
+int enumerateMovie(const char movie[MAX_STR], int charCounts[MAX_WORDS]) {
+    int i;
+    int numWords;
+
+    // set the number for each word to 0
+    for (i = 0; i < MAX_WORDS; i++) {
+        charCounts[i] = 0;
+    }
+
+    numWords = 1;
+    for (i = 0; i < strlen(movie); i++) {
+        if (movie[i] == ' ') {
+            numWords++;
+        }
+        else {
+            charCounts[numWords - 1] += 1;
+        }
+    }
+
+    return numWords;
 }

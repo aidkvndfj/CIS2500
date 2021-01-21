@@ -5,6 +5,8 @@ int main(void) {
     int i;
     int numCritReview;
     int numRecMovies;
+    int numWords;
+    int charCounts[MAX_WORDS];
     char movieNames[NUMBER_MOVIES][MAX_STR];
     char mostCriticalReviewers[NUMBER_REVIEWERS][MAX_STR];
     char mostRecommendedMovies[NUMBER_REVIEWERS][MAX_STR];
@@ -40,6 +42,12 @@ int main(void) {
     printf("\nMovie Score Star Wars: %d\n", predictMovie("Star Wars"));
     printf("\nMovie Score Incredibles: %d\n", predictMovie("Incredibles"));
     printf("\nMovie Score Gone with the Wind: %d\n", predictMovie("Gone with the Wind"));
+
+    numWords = enumerateMovie("Mean Girls", charCounts);
+    printf("Number of words: %d\n", numWords);
+    for (i = 0; i < numWords; i++) {
+        printf("%d : ", charCounts[i]);
+    }
 
     return 0;
 }
