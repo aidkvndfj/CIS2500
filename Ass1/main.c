@@ -37,5 +37,9 @@ int main(void) {
         printf("%s\n", mostRecommendedMovies[i]);
     }
 
+    printf("\nMovie Score Star Wars: %d\n", predictMovie("Star Wars"));
+    printf("\nMovie Score Incredibles: %d\n", predictMovie("Incredibles"));
+    printf("\nMovie Score Gone with the Wind: %d\n", predictMovie("Gone with the Wind"));
+
     return 0;
 }

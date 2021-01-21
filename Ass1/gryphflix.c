@@ -201,4 +201,77 @@ int getMostRecommendedMovies(const char movies[NUMBER_MOVIES][MAX_STR],
 
     return listCounter;
 }
-int predictMovie(const char movie[MAX_STR]);
+
+/*
+more then 2 words -1
+only 1 word -2
+more then one word with even number of chars +1
+same num of chars in each word +2
+*/
+int predictMovie(const char movie[MAX_STR]) {
+    int i;
+    int score;
+    int numWords;
+    int allWordsSameChar;
+    int numWordsWithEvenChar;
+    int numOfCharsInWords[MAX_WORDS];
+
+    // by default we assume that all the words have the same number of chars in them
+    allWordsSameChar = 1;
+    // by default the score is 0
+    score = 0;
+    // by default we assume none of the words have even num of chars
+    numWordsWithEvenChar = 0;
+
+    // set the number for each word to 0
+    for (i = 0; i < MAX_WORDS; i++) {
+        numOfCharsInWords[i] = 0;
+    }
+
+    // count the words and the number of characters in each word.
+    numWords = 1;
+    for (i = 0; i < strlen(movie); i++) {
+        if (movie[i] == ' ') {
+            numWords++;
+        }
+        else {
+            numOfCharsInWords[numWords - 1] += 1;
+        }
+    }
+
+    // Determine if the score should be affected based on the first 2 points
+    if (numWords == 1) {
+        score -= 2;
+    }
+    else if (numWords > 2) {
+        score -= 1;
+    }
+
+    for (i = 0; i < numWords; i++) {
+        if (numOfCharsInWords[i] % 2 == 0) {
+            numWordsWithEvenChar += 1;
+        }
+    }
+    if (numWordsWithEvenChar > 1) {
+        score += 1;
+    }
+
+    for (i = 0; i < numWords - 1; i++) {
+        if (numOfCharsInWords[i] != numOfCharsInWords[i + 1]) {
+            allWordsSameChar = 0;
+        }
+    }
+    if (allWordsSameChar == 1) {
+        score += 2;
+    }
+
+    if (score > 2) {
+        return 2;
+    }
+    else if (score < -2) {
+        return -2;
+    }
+    else {
+        return score;
+    }
+}
