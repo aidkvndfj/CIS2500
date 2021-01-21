@@ -153,5 +153,52 @@ int getMostCriticalReviewers(struct reviewStruct reviews[NUMBER_REVIEWERS],
 
 int getMostRecommendedMovies(const char movies[NUMBER_MOVIES][MAX_STR],
                              const struct reviewStruct reviews[NUMBER_REVIEWERS],
-                             char mostRecommendedMovies[NUMBER_REVIEWERS][MAX_STR]);
+                             char mostRecommendedMovies[NUMBER_REVIEWERS][MAX_STR]) {
+    int i;
+    int j;
+    int maxNumOfY;
+    int currNumOfY;
+    int listCounter;
+
+    // go through the reviewers and determine the max number of ys
+    maxNumOfY = 0;
+    // loop through the movies
+    for (i = 0; i < NUMBER_MOVIES; i++) {
+        currNumOfY = 0;
+        // loop through the reviewers
+        for (j = 0; j < NUMBER_REVIEWERS; j++) {
+            // if the reviewrs game a move a y(1) add 1 to currenumofy
+            if (tolower(reviews[j].feedback[i]) == 1) {
+                currNumOfY++;
+            }
+        }
+
+        // if the num of y is greater then the current max, then make the max, the current ys
+        if (currNumOfY > maxNumOfY) {
+            maxNumOfY = currNumOfY;
+        }
+    }
+
+    // go through the reviewers and determine the moveis with the max ys
+    listCounter = 0;
+    // loop through the movies
+    for (i = 0; i < NUMBER_MOVIES; i++) {
+        currNumOfY = 0;
+        // loop through the reviewers
+        for (j = 0; j < NUMBER_REVIEWERS; j++) {
+            // if the reviewrs game a move a y(1) add 1 to currenumofy
+            if (tolower(reviews[j].feedback[i]) == 1) {
+                currNumOfY++;
+            }
+        }
+
+        // if the num of y is the max, then add it to the list
+        if (currNumOfY == maxNumOfY) {
+            strcpy(mostRecommendedMovies[listCounter], movies[i]);
+            listCounter++;
+        }
+    }
+
+    return listCounter;
+}
 int predictMovie(const char movie[MAX_STR]);
