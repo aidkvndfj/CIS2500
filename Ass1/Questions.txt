@@ -1,0 +1,2 @@
+In my makefile, must I have main.c, or should I remove it.
+Do i have to make my program work with 4 moveis/11 reviewers? or is the const the MAX no matter what.

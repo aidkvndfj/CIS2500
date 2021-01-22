@@ -1,0 +1,8 @@
+Questions:
+what is in main
+how many files do we need as arguments
+What is the format to print
+What is the format to save
+What is the format in which we get the data
+How many dependents will there be.
+Do they actually want me to use gitlab to store my files, or can I just upload once I am done.
