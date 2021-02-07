@@ -27,49 +27,27 @@ int main(void) {
             totalWords += 1;
             wordsPerLine[numLines] += 1;
             numLines += 1;
-            realloc(wordsPerLine, sizeof(int) * (numLines + 1));
+            wordsPerLine = realloc(wordsPerLine, sizeof(int) * (numLines + 1));
             wordsPerLine[numLines] = 0;
         }
         if (currChar != '\0') {
-            realloc(poemPtr, sizeof(char) * (currPos + 1));
+            poemPtr = realloc(poemPtr, sizeof(char) * (currPos + 1));
             poemPtr[currPos] = currChar;
 
             currPos += 1;
         }
 
-        printf("%d\n", currPos);
+        // printf("%d\n", currPos);
         scanf("%c", &currChar);
     }
 
+    printf("%d words on %d lines\n", totalWords, numLines);
+
     for (int i = 0; i < numLines; i++) {
-        printf("line %d: %d\n", i + 1, wordsPerLine[i]);
+        printf("%d ", wordsPerLine[i]);
     }
 
-    printf("Lines: %d\nWords: %d\n", numLines, totalWords);
-    printf("%s", poemPtr);
-
-    /*
-    char *currLine = NULL;
-    int lineCount;
-    int stringLen;
-
-    lineCount = 0;
-    currLine = malloc(sizeof(char) * MAX_STRING_LENGTH);
-    fgets(&currLine, MAX_STRING_LENGTH, stdin);
-    strtok(&currLine, "\n");
-
-    while (strcmp(&currLine, ".") != 0) {
-        stringLen = strlen(&currLine);
-        currLine = realloc(currLine, sizeof(char) * stringLen + sizeof(char) * MAX_STRING_LENGTH);
-        lineCount++;
-        fgets(&currLine, MAX_STRING_LENGTH, stdin);
-        printf("last: %s\n", &currLine);
-    }
-
-    for (int i = 0; i < lineCount; i++) {
-        printf("%s\n", &currLine[i]);
-    }
-    */
+    // printf("%s", poemPtr);
 
     return 0;
 }
