@@ -1,20 +1,28 @@
-#define MAX_LEN_NAME 20
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
-typedef struct justATag {
-    char name[MAX_LEN_NAME];
-    char* supervisor;
-    int numCoursesDone;
-    float currentPercentage;
-} gradStudent;
 
 int main(void) {
-    gradStudent g1;
-    strcpy("Max", g1.name);
-    printf("%s", g1.name);
+    int* ptr = NULL;
+    int i;
+    char ans = 'y';
+
+    i = 0;
+    while (ans == 'y') {
+        if (ptr == NULL) {
+            ptr = malloc(sizeof(int));
+            ptr[i] = i * 2;
+        }
+        else {
+            ptr = realloc(ptr, sizeof(int) * (i + 1));
+            ptr[i] = i * 2;
+        }
+
+        i++;
+
+        printf("Do you want to continue?");
+        scanf("%c", &ans);
+        getchar();
+    }
 
     return 0;
 }

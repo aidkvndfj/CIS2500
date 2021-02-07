@@ -19,7 +19,6 @@ int main(void) {
 
     scanf("%c", &currChar);
     while (currChar != '.') {
-
         if (currChar == ' ') {
             totalWords += 1;
             wordsPerLine[numLines] += 1;
@@ -31,16 +30,19 @@ int main(void) {
             realloc(wordsPerLine, sizeof(int) * (numLines + 1));
             wordsPerLine[numLines] = 0;
         }
+        if (currChar != '\0') {
+            realloc(poemPtr, sizeof(char) * (currPos + 1));
+            poemPtr[currPos] = currChar;
 
-        realloc(poemPtr, sizeof(char) * (currPos + 1));
-        poemPtr[currPos] = currChar;
+            currPos += 1;
+        }
 
-        currPos += 1;
+        printf("%d\n", currPos);
         scanf("%c", &currChar);
     }
 
     for (int i = 0; i < numLines; i++) {
-        printf("line %d: %d\n", i, wordsPerLine[i]);
+        printf("line %d: %d\n", i + 1, wordsPerLine[i]);
     }
 
     printf("Lines: %d\nWords: %d\n", numLines, totalWords);
