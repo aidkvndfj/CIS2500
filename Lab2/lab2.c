@@ -1,4 +1,4 @@
-#include "Lab2.h"
+#include "lab2.h"
 
 int main(void) {
     char currChar;
@@ -8,15 +8,15 @@ int main(void) {
     int totalWords;
     int currPos;
 
-    printf("Enter Poem\n");
     poemPtr = malloc(sizeof(char));
     wordsPerLine = malloc(sizeof(int));
-    wordsPerLine[0] = 0;
 
+    wordsPerLine[0] = 0;
     currPos = 0;
     totalWords = 0;
     numLines = 0;
 
+    printf("Enter Poem\n");
     scanf("%c", &currChar);
     while (currChar != '.') {
         if (currChar == ' ') {
@@ -30,24 +30,28 @@ int main(void) {
             wordsPerLine = realloc(wordsPerLine, sizeof(int) * (numLines + 1));
             wordsPerLine[numLines] = 0;
         }
-        if (currChar != '\0') {
+
+        if (currPos == 0) {
+            poemPtr[currPos] = currChar;
+        }
+        else {
+            printf("realloc\n");
             poemPtr = realloc(poemPtr, sizeof(char) * (currPos + 1));
             poemPtr[currPos] = currChar;
-
-            currPos += 1;
         }
 
         // printf("%d\n", currPos);
+        currPos += 1;
         scanf("%c", &currChar);
     }
 
     printf("%d words on %d lines\n", totalWords, numLines);
-
+ 
     for (int i = 0; i < numLines; i++) {
         printf("%d ", wordsPerLine[i]);
     }
 
-    // printf("%s", poemPtr);
+    printf("\n%s", poemPtr);
 
     return 0;
 }
