@@ -4,6 +4,8 @@ int main() {
     char currChar;
     char *poemPtr = NULL;
     int *wordsPerLine = NULL;
+    int charsInCurrWord;
+    int charsInLine;
     int numberOfLines;
     int totalWords;
     int currPos;
@@ -16,6 +18,9 @@ int main() {
     totalWords = 0;
     currPos = 0;
 
+    charsInCurrWord = 0;
+    charsInLine = 0;
+
     printf("Enter Poem\n");
     scanf("%c", &currChar);
 
@@ -23,6 +28,8 @@ int main() {
         if (currChar == ' ') {
             totalWords += 1;
             wordsPerLine[numberOfLines] += 1;
+
+            charsInCurrWord = 0;
         }
         if (currChar == '\n') {
             totalWords += 1;
@@ -30,6 +37,9 @@ int main() {
             numberOfLines += 1;
             wordsPerLine = realloc(wordsPerLine, sizeof(int) * (numberOfLines + 1));
             wordsPerLine[numberOfLines] = 0;
+
+            charsInCurrWord = 0;
+            charsInLine = 0;
         }
 
         if (currPos == 0) {
@@ -39,8 +49,22 @@ int main() {
             poemPtr = realloc(poemPtr, sizeof(char) * (currPos + 1));
         }
 
+
+        if (currChar != '\n' && currChar != ' ' && currChar != '\0') {
+            charsInCurrWord +=1;
+        } else if (currChar != '\n' && currChar != '\0') {
+            charsInLine += 1;
+        }
+
         poemPtr[currPos] = currChar;
         currPos += 1;
+
+        if (charsInCurrWord > MAX_WORD_LENGTH) {
+            return 1;
+        }
+        if (charsInLine > MAX_STRING_LENGTH) {
+            return 1;
+        }
 
         scanf("%c", &currChar);
     }
