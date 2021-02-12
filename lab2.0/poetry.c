@@ -77,10 +77,10 @@ int main() {
         currPos += 1;
         
         // if the current chars in a word or line are above the max, end the program
-        if (charsInCurrWord > MAX_WORD_LENGTH) {
+        if (charsInCurrWord > 20) {
             return 1;
         }
-        if (charsInLine > MAX_STRING_LENGTH) {
+        if (charsInLine > 100) {
             return 1;
         }
 
