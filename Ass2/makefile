@@ -3,6 +3,6 @@ fleschIndex: fleschIndex.o main.o
 fleschIndex.o: fleschIndex.c fleschIndex.h
 	gcc -Wall -std=c99 -c fleschIndex.c
 main.o: main.c fleschIndex.h
-	gcc -Wall -std=c99 -c main.c99
+	gcc -Wall -std=c99 -c main.c
 clean:
 	rm *.o fleschIndex
