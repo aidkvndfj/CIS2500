@@ -21,3 +21,12 @@ by me in its entirety.
 char * readFile(char * filename);
 int calculateFleschIndex(int syllables, int words, int sentences);
 void outputFormattedFleschScores(int syllables, int words, int fleschIndex, int sentenceCount);
+
+int isPunctuation(char character);
+int isLetter(char character);
+int isVowel(char character);
+int isEndWordChar(char character);
+
+int countWords(char * fileText);
+int countSentences(char * fileText);
+int countSyllables(char * fileText);
