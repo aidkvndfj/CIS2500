@@ -28,7 +28,11 @@ char * readFile (char * filename) {
 }
 
 int calculateFleschIndex(int syllables, int words, int sentences) {
-    return (int)(206.835 - 84.6 * ((float)syllables / (float)words) - 1.015 * ((float)words / (float)sentences));
+    int index;
+    index = (84.6 * ((float)syllables / (float)words)) - (1.015 * ((float)words / (float)sentences));
+    index = 206.835 - index;
+
+    return index;
 }
 
 void outputFormattedFleschScores(int syllables, int words, int fleschIndex, int sentenceCount) {
@@ -47,6 +51,7 @@ int isPunctuation(char character) {
 }
 
 int isLetter(char character) {
+    character = tolower(character);
     char letters[] = "abcdefghijklmnopqrstuvwxyz";
     int i;
 
@@ -67,6 +72,7 @@ int isEndWordChar(char character) {
 }
 
 int isVowel(char character) {
+    character = tolower(character);
     if (character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u' || character == 'y') {
         return 1;
     }
@@ -114,6 +120,7 @@ int countSyllables(char * fileText) {
     int totalSyllables;
     int syllablesInWord;
     int currChar;
+    int resetWordSyllable;
     char currentChar;
     char lastChar;
     char nextChar;
@@ -131,32 +138,25 @@ int countSyllables(char * fileText) {
             if (currentChar == 'e' && !isEndWordChar(nextChar)) {
                 totalSyllables += 1;
                 syllablesInWord += 1;
-                printf("e chars: '%c%c%c'\n", lastChar, currentChar, nextChar);
+                // printf("e chars: '%c%c%c'\n", lastChar, currentChar, nextChar);
             } else if (isVowel(currentChar) && currentChar != 'e') {
                 totalSyllables += 1;
                 syllablesInWord += 1;
-                printf("Voe chars: '%c%c%c'\n", lastChar, currentChar, nextChar);
+                // printf("Voe chars: '%c%c%c'\n", lastChar, currentChar, nextChar);
             }
+            resetWordSyllable = 1;
         }
 
         currChar += 1;
-
-        //// LOGIC NOT YET DONE
-        if (isEndWordChar(currentChar) && (!isEndWordChar(nextChar) ^ !isEndWordChar(lastChar))) {
+        
+        if (isEndWordChar(currentChar) && resetWordSyllable) {
             if (syllablesInWord == 0) {
                 totalSyllables += 1;
-                printf("Special Voewl\n");
+                // printf("Special Voewl\n");
             }
             syllablesInWord = 0;
+            resetWordSyllable = 0;
         }
-
-        // if (isVowel(currentChar) && (isLetter(lastChar) || isLetter(nextChar))) {
-        //     if (isVowel(lastChar) || isVowel(nextChar)) {
-        //         currChar++;
-        //     }
-        //     totalSyllables += 1;
-        // }
-        // currChar++;
     }
 
     return totalSyllables;
