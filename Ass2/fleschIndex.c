@@ -29,7 +29,10 @@ char * readFile (char * filename) {
 
 int calculateFleschIndex(int syllables, int words, int sentences) {
     int index;
-    index = (84.6 * ((float)syllables / (float)words)) - (1.015 * ((float)words / (float)sentences));
+    // index = (84.6 * ((float)syllables / (float)words)) - (1.015 * ((float)words / (float)sentences));
+    // index = 206.835 - index;
+    
+    index = (84.6 * (syllables / words)) - (1.015 * (words / sentences));
     index = 206.835 - index;
 
     return index;
