@@ -24,6 +24,8 @@ char * readFile (char * filename) {
         fileString = realloc(fileString, sizeof(char) * (numChar + 1));
     }
 
+    fclose(inFile);
+
     return fileString;
 }
 
@@ -58,11 +60,12 @@ int isLetter(char character) {
     char letters[] = "abcdefghijklmnopqrstuvwxyz";
     int i;
 
-    for(i = 0; i < strlen(letters); i++) {
+    for(i = 0; i < 26; i++) {
         if (character == letters[i]) {
             return 1;
         }
     }
+
     return 0;
 }
 
@@ -114,7 +117,7 @@ int countSentences(char * fileText) {
         }
 
         currChar++;
-    }
+    }  
 
     return totalSentences;
 }

@@ -19,14 +19,13 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    printf("%s", fileText);
     totalWords = countWords(fileText);
     totalSentences = countSentences(fileText);
     totalSyllables = countSyllables(fileText);
+    free(fileText);
     fleschIndex = calculateFleschIndex(totalSyllables, totalWords, totalSentences);
     outputFormattedFleschScores(totalSyllables, totalWords, fleschIndex, totalSentences);
 
 
-    free(fileText);
     return 0;
 }
