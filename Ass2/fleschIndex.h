@@ -18,6 +18,7 @@ by me in its entirety.
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <math.h>
 
 char * readFile(char * filename);
 int calculateFleschIndex(int syllables, int words, int sentences);
