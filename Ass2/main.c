@@ -20,6 +20,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    printf("%s", fileText);
+
     // get total words
     totalWords = countWords(fileText);
     // get total sentences

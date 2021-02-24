@@ -33,6 +33,8 @@ char * readFile (char * filename) {
         fileString = realloc(fileString, sizeof(char) * (numChar + 1));
     }
 
+    fileString[numChar] = '\0';
+
     // close the file
     fclose(inFile);
 
