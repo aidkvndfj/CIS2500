@@ -14,18 +14,24 @@ int main(int argc, char* argv[]) {
 
     fileText = readFile(argv[1]);
 
+    // if the file is null, exit the program
     if (fileText == NULL) {
         printf("ERROR READING FILE \"%s\"", argv[1]);
         return 1;
     }
 
+    // get total words
     totalWords = countWords(fileText);
+    // get total sentences
     totalSentences = countSentences(fileText);
+    // get total syllables
     totalSyllables = countSyllables(fileText);
+    // free the memory
     free(fileText);
+    // get the flesch index
     fleschIndex = calculateFleschIndex(totalSyllables, totalWords, totalSentences);
+    // print the info
     outputFormattedFleschScores(totalSyllables, totalWords, fleschIndex, totalSentences);
-
 
     return 0;
 }
