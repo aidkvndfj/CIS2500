@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    printf("%s", fileText);
+    // printf("%s", fileText);
 
     // get total words
     totalWords = countWords(fileText);

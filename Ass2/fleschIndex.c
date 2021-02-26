@@ -135,10 +135,15 @@ int countWords(char * fileText) {
 
     //loop through the files text untill it reaches the terminating char(the end)
     while(fileText[currChar + 1] != '\0'){
-        // if the current char is a letter, and the next char isn't a end word char or a puncuation, add 1 to words.
-        if (isLetter(fileText[currChar]) && (isEndWordChar(fileText[currChar + 1]) || isPunctuation(fileText[currChar + 1]))) {
+        // if the current char is a char, and the next char is a end word char or a puncuation, add 1 to words.
+
+        if ((!isEndWordChar(fileText[currChar]) && !isPunctuation(fileText[currChar])) && (isEndWordChar(fileText[currChar + 1]) || isPunctuation(fileText[currChar + 1]))) {
             totalWords += 1;
         }
+
+        // if (isLetter(fileText[currChar]) && (isEndWordChar(fileText[currChar + 1]) || isPunctuation(fileText[currChar + 1]))) {
+        //     totalWords += 1;
+        // }
         currChar++;
     }
     
@@ -195,15 +200,17 @@ int countSyllables(char * fileText) {
         // if the current char is a voewl, and the previous char isn't a voewl
         if (isVowel(currentChar) && !isVowel(lastChar)) {
             // if the current char is an e, and the next isn't an end word char
-            if (currentChar == 'e' && !isEndWordChar(nextChar)) {
+            if (currentChar == 'e' && (!isEndWordChar(nextChar) && !isPunctuation(nextChar))) {
                 // add 1 to syllables
                 totalSyllables += 1;
                 syllablesInWord += 1;
+                // printf("eee Syllable: %c%c%c\n", lastChar, currentChar, nextChar);
             // if the current char is a voewl, and isn't e
             } else if (isVowel(currentChar) && currentChar != 'e') {
                 // add 1 to syllables
                 totalSyllables += 1;
                 syllablesInWord += 1;
+                // printf("vow Syllable: %c%c%c\n", lastChar, currentChar, nextChar);
             }
             resetWordSyllable = 1;
         }
@@ -211,7 +218,7 @@ int countSyllables(char * fileText) {
         currChar += 1;
         
         // if the current char is a end words char, and flag to reset the words syllables is true
-        if (isEndWordChar(currentChar) && resetWordSyllable) {
+        if ((isEndWordChar(currentChar) || isPunctuation(currentChar)) && resetWordSyllable) {
             // if the syllables in the word is 1
             if (syllablesInWord == 0) {
                 // add 1 to syllables
