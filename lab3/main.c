@@ -4,7 +4,7 @@ int main(void) {
     int i;
     int fibAnwsers[] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377};
     int fibAnwser;
-    int sumAnwsers[] = {0, 1, 4, 8, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169};
+    int sumAnwsers[] = {0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169};
     int sumAnwser;
 
     for (i = 0; i < 15; i++) {
