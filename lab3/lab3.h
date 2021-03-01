@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 
 int iterativeFibonacci(int n);
 int iterativeSumNOdd(int n);
