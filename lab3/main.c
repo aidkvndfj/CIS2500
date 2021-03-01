@@ -30,20 +30,20 @@ int main(void) {
     for (i = 0; i < 14; i++) {
         sumAnwser = iterativeSumNOdd(i);
         if (sumAnwser == sumAnwsers[i]) {
-            printf("Iterative Sum Of of %d: %d \033[0;32m PASS \033[0m \n", i, sumAnwser);
+            printf("Iterative Sum Of of %d odds: %d \033[0;32m PASS \033[0m \n", i, sumAnwser);
         }
         else {
-            printf("Iterative Sum Of of %d: %d \033[0;31m FAIL \033[0m \n", i, sumAnwser);
+            printf("Iterative Sum Of of %d odds: %d \033[0;31m FAIL \033[0m \n", i, sumAnwser);
         }
     }
 
     for (i = 0; i < 14; i++) {
         sumAnwser = recursiveSumNOdd(i);
         if (sumAnwser == sumAnwsers[i]) {
-            printf("Recursive Sum Of of %d: %d \033[0;32m PASS \033[0m \n", i, sumAnwser);
+            printf("Recursive Sum Of of %d odds: %d \033[0;32m PASS \033[0m \n", i, sumAnwser);
         }
         else {
-            printf("Recursive Sum Of of %d: %d \033[0;31m FAIL \033[0m \n", i, sumAnwser);
+            printf("Recursive Sum Of of %d odds: %d \033[0;31m FAIL \033[0m \n", i, sumAnwser);
         }
     }
 
