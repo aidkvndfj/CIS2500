@@ -26,7 +26,7 @@ tweet* createTweet(tweet* tweetList) {
 
     newTweet->id += strlen(newTweet->text);
 
-    /*  backup checker
+    //  backup checker
     if (tempTweet != NULL) {
         while(1) {
             if (newTweet->id == tempTweet->id) {
@@ -39,8 +39,8 @@ tweet* createTweet(tweet* tweetList) {
             }
         }
     }
-    */
     
+    /*
     // checks to make sure the id is unique
     if (tempTweet != NULL) {
         // run at least once
@@ -57,6 +57,7 @@ tweet* createTweet(tweet* tweetList) {
         // while the next tweet isn't null(deosn't exsist)
         } while (tempTweet->next != NULL); 
     }
+    */
     printf("Your computer-generated userid is %d.\n", newTweet->id);
 
     // add tweet to linkd list
