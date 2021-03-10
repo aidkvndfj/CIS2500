@@ -22,12 +22,12 @@ int main(void) {
 
         switch (menuChoice) {
             case 1:
-                createTweet(tweetList);
+                tweetList = createTweet(tweetList);
 
                 break;
 
             case 2:
-                printf("Case %d\n", menuChoice);
+                displayTweets(tweetList);
 
                 break;
 
@@ -68,6 +68,7 @@ int main(void) {
                 printf("ERROR: %d IS A INVALID MENU CHOICE\n", menuChoice);
                 break;
         }
+        printf("----------------------------\n");
     } while (menuChoice != 8);
 
     return 0;
