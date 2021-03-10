@@ -7,7 +7,7 @@ tweetManager: ${O_FILES}
 main.o: main.c headerA3.h
 	gcc ${COMPILE_FLAGS} -c main.c
 
-helperFunctions.o: helperFunctions.c headerA3.h
+helperFunctions.o: helperFunctions.c helper.h
 	gcc ${COMPILE_FLAGS} -c helperFunctions.c
 
 addNodeToList.o: addNodeToList.c headerA3.h

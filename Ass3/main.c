@@ -1,11 +1,13 @@
 #include "headerA3.h"
+#include "helper.h"
 
 int main(void) {
     int menuChoice;
+    tweet *tweetList;
+    tweetList = NULL;
 
     do {
         // print out the main option menu
-        printf("Please input a menu choice from 1-8:\n");
         printf("1. Create a new tweet\n");
         printf("2. Display tweets\n");
         printf("3. Search a tweet (by keyword)\n");
@@ -15,11 +17,12 @@ int main(void) {
         printf("7. Load tweets from a file\n");
         printf("8. Exit\n");
         //get user choice
+        printf("Choose a menu option: ");
         scanf("%d", &menuChoice);
 
         switch (menuChoice) {
             case 1:
-                printf("Case %d\n", menuChoice);
+                createTweet(tweetList);
 
                 break;
 
@@ -65,7 +68,6 @@ int main(void) {
                 printf("ERROR: %d IS A INVALID MENU CHOICE\n", menuChoice);
                 break;
         }
-        printf("------------------------------------\n");
     } while (menuChoice != 8);
 
     return 0;
