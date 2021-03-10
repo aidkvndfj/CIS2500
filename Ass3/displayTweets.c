@@ -11,11 +11,11 @@ void displayTweets(tweet* tweetList) {
     else {
         // loop through the tweets printing and going to the next tweet
         while (tempTweet->next != NULL) {
-            printf("%s:%s\nid:%d\n", tempTweet->user, tempTweet->text, tempTweet->id);
+            printf("%d: Created by %s: %s\n", tempTweet->id, tempTweet->user, tempTweet->text);
             tempTweet = tempTweet->next;
         }
 
         //print the final tweet
-        printf("%s:%s\nid:%d\n", tempTweet->user, tempTweet->text, tempTweet->id);
+        printf("%d: Created by %s: %s\n", tempTweet->id, tempTweet->user, tempTweet->text);
     }
 }
