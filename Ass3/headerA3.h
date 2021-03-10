@@ -11,7 +11,7 @@ typedef struct microtweet{
 }tweet;
 
 
-
+//----- Core Functions -----//
 // menu functions 
 tweet * createTweet( tweet * tweetList);
 
@@ -30,4 +30,5 @@ void loadTweetsFromFile(tweet ** tweetList);
 // linked list function - required after you create a tweet or load tweets from a file
 void addNodeToList(tweet**tweetList,tweet * node);
 
-
+//----- Helper Functions -----//
+void printHello();
