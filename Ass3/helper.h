@@ -3,4 +3,4 @@
 #include <stdlib.h>
 
 //----- Helper Functions -----//
-void printHello();
+int isEndWordChar(char character);

@@ -37,7 +37,7 @@ int main(void) {
                 break;
 
             case 4:
-                printf("Case %d\n", menuChoice);
+                countStopWords(tweetList);
 
                 break;
 

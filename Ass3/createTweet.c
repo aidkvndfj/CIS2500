@@ -14,10 +14,10 @@ tweet* createTweet(tweet* tweetList) {
     fgetc(stdin);
     printf("Enter a username: ");
     fgets(newTweet->user, 51, stdin);
-    strtok(newTweet->user, "\n");
+    newTweet->user[strlen(newTweet->user) - 1] = '\0';
     printf("Enter the user's tweet: ");
     fgets(newTweet->text, 141, stdin);
-    strtok(newTweet->text, "\n");
+    newTweet->text[strlen(newTweet->text) - 1] = '\0';
 
     // get initial tweet id
     for (int i = 0; i < strlen(newTweet->user); i++) {

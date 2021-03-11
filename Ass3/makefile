@@ -13,7 +13,7 @@ helperFunctions.o: helperFunctions.c helper.h
 addNodeToList.o: addNodeToList.c headerA3.h
 	gcc ${COMPILE_FLAGS} -c addNodeToList.c
 
-countStopWords.o: countStopWords.c headerA3.h
+countStopWords.o: countStopWords.c headerA3.h helper.h
 	gcc ${COMPILE_FLAGS} -c countStopWords.c
 
 createTweet.o: createTweet.c headerA3.h
