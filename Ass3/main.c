@@ -42,7 +42,7 @@ int main(void) {
                 break;
 
             case 5:
-                printf("Case %d\n", menuChoice);
+                deleteTweet(&tweetList);
 
                 break;
 
