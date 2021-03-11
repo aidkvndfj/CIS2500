@@ -32,7 +32,7 @@ int main(void) {
                 break;
 
             case 3:
-                printf("Case %d\n", menuChoice);
+                searchTweetsByKeyword(tweetList);
 
                 break;
 
