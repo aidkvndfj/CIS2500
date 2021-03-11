@@ -63,13 +63,13 @@ tweet* createTweet(tweet* tweetList) {
     // add tweet to linkd list
     tempTweet = tweetList;
     if (tempTweet == NULL) {
-        printf("UPDATED HEAD\n");
+        // printf("UPDATED HEAD\n");
         tweetList = newTweet;
     } else {
         while(tempTweet->next != NULL) {
             tempTweet = tempTweet->next;
         }
-        printf("ADDED POINTER\n");
+        // printf("ADDED POINTER\n");
         tempTweet->next = newTweet;
     }
 
