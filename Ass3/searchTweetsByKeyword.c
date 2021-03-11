@@ -18,10 +18,10 @@ int searchTweetsByKeyword(tweet* tweetList) {
     if (tempTweetList != NULL) {
         while (1) {
             for (i = 0; i < strlen(tempTweetList->text); i++) {
-                if (tempTweetList->text[i] == keyword[0]) {
+                if (tolower(tempTweetList->text[i]) == tolower(keyword[0])) {
                     wordIsThere = 1;
                     for (j = 0; j < length; j++) {
-                        if (tempTweetList->text[i + j] != keyword[0 + j]) {
+                        if (tolower(tempTweetList->text[i + j]) != tolower(keyword[0 + j])) {
                             wordIsThere = 0;
                             break;
                         }
