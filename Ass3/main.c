@@ -47,7 +47,7 @@ int main(void) {
                 break;
 
             case 6:
-                printf("Case %d\n", menuChoice);
+                saveTweetsToFile(tweetList);
 
                 break;
 
