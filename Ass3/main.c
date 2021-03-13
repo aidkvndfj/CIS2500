@@ -52,7 +52,7 @@ int main(void) {
                 break;
 
             case 7:
-                printf("Case %d\n", menuChoice);
+                loadTweetsFromFile(&tweetList);
 
                 break;
 
