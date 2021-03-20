@@ -5,7 +5,7 @@
     end word chars. It will return 0(false) if it doesn't
 */
 int isEndWordChar(char character) {
-    if (character == ' ' || character == ',' || character == '\n' || character == '\0') {
+    if (character == ' ' || character == ',' || character == '\n' || character == '\0' || character == '.') {
         return 1;
     }
 
