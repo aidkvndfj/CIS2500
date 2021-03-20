@@ -22,7 +22,7 @@ int main(void) {
 
         switch (menuChoice) {
             case 1:
-                tweetList = createTweet(tweetList);
+                addNodeToList(&tweetList, createTweet(tweetList));
 
                 break;
 
@@ -70,6 +70,7 @@ int main(void) {
         }
     } while (menuChoice != 8);
 
+    // free memory
     free (tweetList);
 
     return 0;

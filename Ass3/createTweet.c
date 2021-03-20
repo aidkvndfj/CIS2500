@@ -26,52 +26,24 @@ tweet* createTweet(tweet* tweetList) {
 
     newTweet->id += strlen(newTweet->text);
 
-    //  backup checker
+    //  checker id and make sure no other tweets have it
     if (tempTweet != NULL) {
+        // loop untill break;
         while(1) {
+            // if the id is the same as another tweets, add some random number to it and go back to begining of list
             if (newTweet->id == tempTweet->id) {
                 newTweet->id += (1 + rand() * (999 - 1) / RAND_MAX);
                 tempTweet = tweetList;
+            // if next tweet doesn't exsist, break
             } else if (tempTweet->next == NULL) {
                 break;
+            // move to next tweet
             } else {
                 tempTweet = tempTweet->next;
             }
         }
     }
-    
-    /*
-    // checks to make sure the id is unique
-    if (tempTweet != NULL) {
-        // run at least once
-        do {
-            // if the new id is the same as the tweet we are curently looking at
-            if (tempTweet->id == newTweet->id) {
-                // add a random num from 0 to 999 ************************ FIX
-                newTweet->id += rand() % 1000;
-                // reset the list to make sure new id isn't already an id
-                tempTweet = tweetList;
-            } else { // if the current id isn't the same as the new id, move to next tweet
-                tempTweet = tempTweet->next;
-            }
-        // while the next tweet isn't null(deosn't exsist)
-        } while (tempTweet->next != NULL); 
-    }
-    */
     printf("Your computer-generated userid is %d.\n", newTweet->id);
 
-    // add tweet to linkd list
-    tempTweet = tweetList;
-    if (tempTweet == NULL) {
-        // printf("UPDATED HEAD\n");
-        tweetList = newTweet;
-    } else {
-        while(tempTweet->next != NULL) {
-            tempTweet = tempTweet->next;
-        }
-        // printf("ADDED POINTER\n");
-        tempTweet->next = newTweet;
-    }
-
-    return tweetList;
+    return newTweet;
 }

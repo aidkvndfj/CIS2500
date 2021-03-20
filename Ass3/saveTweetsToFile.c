@@ -7,16 +7,20 @@ void saveTweetsToFile(tweet* tweetList) {
 
     tempTweetList = tweetList;
 
+    // get the filename
     printf("Enter the filename where you would like to store your tweets: ");
     scanf("%s", fileName);
 
     outFile = fopen(fileName, "w");
 
+    // make sure the tweet list isn't empty
     if (tempTweetList != NULL) {
+        // loop until break
         while (1) {
-            // fprintf(outFile, "%d,%s,%c%s%c", tempTweetList->id, tempTweetList->user, '"', tempTweetList->text, '"');
+            // print the current tweets information
             fprintf(outFile, "%d,%s,%s\n", tempTweetList->id, tempTweetList->user, tempTweetList->text);
 
+            // if there is no next tweet, break, otherwise move on to next tweet
             if (tempTweetList->next == NULL) {
                 break;
             } else {
@@ -25,5 +29,6 @@ void saveTweetsToFile(tweet* tweetList) {
         }
     }
 
+    // close file
     fclose(outFile);
 }

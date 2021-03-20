@@ -3,37 +3,43 @@
 void loadTweetsFromFile(tweet** tweetList) {
     FILE* inFile = NULL;
     tweet* newTweet;
-    tweet* tempTweetList;
     char fileName[30];
     char tempWord[220];
     int currLetter;
     int i;
 
     currLetter = 0;
-    tempTweetList = *tweetList;
 
+    // make sure stream in clear
     fflush(stdin);
 
+    // get the filename 
     printf("Enter a filename to load from: ");
     scanf("%s", fileName);
 
+    // open file
     inFile = fopen(fileName, "r");
 
+    // make sure there was no errors opening file
     if (inFile == NULL) {
         printf("ERROR: CANNOT READ FILE %s", fileName);
         return;
-    }
+    }   
 
+    // go untill end of file
     while (!feof(inFile)) {
+        // make a new tweet and set it to null
         newTweet = malloc(sizeof(tweet));
         newTweet->next = NULL;
         currLetter = 1;
 
+        // get the tweet id, and the rest of the text
         fscanf(inFile, "%d", &newTweet->id);
         fgets(tempWord, 220, inFile);
         strtok(tempWord, "\n");
         strtok(tempWord, "\r");
 
+        // get the user name and write it to tweets user
         i = 0;
         while(tempWord[currLetter] != ',') {
             newTweet->user[i] = tempWord[currLetter];
@@ -43,6 +49,7 @@ void loadTweetsFromFile(tweet** tweetList) {
 
         currLetter++;
 
+        // get the tweet text and write it to the tweets text
         i = 0;
         while (tempWord[currLetter] != '\0') {
             newTweet->text[i] = tempWord[currLetter];
@@ -50,21 +57,9 @@ void loadTweetsFromFile(tweet** tweetList) {
             i++;
         }
 
-        if (tempWord[strlen(tempWord) - 2] == ',') {
-            tempWord[strlen(tempWord) - 2] = '\0';
-        }
-
-        tempTweetList = *tweetList;
-        if (tempTweetList == NULL) {
-            *tweetList = newTweet;
-        }
-        else {
-            while (tempTweetList->next != NULL) {
-                tempTweetList = tempTweetList->next;
-            }
-            tempTweetList->next = newTweet;
-        }
+        addNodeToList(tweetList, newTweet);
     }
 
+    // say tweet import was a success.
     printf("Tweets imported!\n");
 }
