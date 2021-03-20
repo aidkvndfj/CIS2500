@@ -71,5 +71,7 @@ int main(void) {
         printf("----------------------------\n");
     } while (menuChoice != 8);
 
+    free (tweetList);
+
     return 0;
 }

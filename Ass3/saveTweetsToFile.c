@@ -15,7 +15,7 @@ void saveTweetsToFile(tweet* tweetList) {
     if (tempTweetList != NULL) {
         while (1) {
             // fprintf(outFile, "%d,%s,%c%s%c", tempTweetList->id, tempTweetList->user, '"', tempTweetList->text, '"');
-            fprintf(outFile, "%d,%s,%s", tempTweetList->id, tempTweetList->user, tempTweetList->text);
+            fprintf(outFile, "%d,%s,%s\n", tempTweetList->id, tempTweetList->user, tempTweetList->text);
 
             if (tempTweetList->next == NULL) {
                 break;

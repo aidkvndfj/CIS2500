@@ -5,6 +5,7 @@ void deleteTweet(tweet** tweetList) {
     int tweetToDelete;
     int i;
     tweet *tempTweetList;
+    tweet *tweetToDeletePtr;
 
     tempTweetList = *tweetList;    
     numTweets = 0;
@@ -25,12 +26,31 @@ void deleteTweet(tweet** tweetList) {
     printf("Currently there are %d tweets.\n\n", numTweets);
     printf("Which tweet do you wish to delete - enter a vlue between 1 and %d:", numTweets);
     scanf("%d", &tweetToDelete);
-    tweetToDelete -= 1;
-    for (i = 0; i < tweetToDelete - 1; i++) {
-        tempTweetList = tempTweetList->next;
+    if (tweetToDelete == 1) {
+        printf("Tweet %d deleted. ", tempTweetList->id);
+        tweetToDeletePtr = *tweetList;
+        *tweetList = tempTweetList->next;
+        numTweets -= 1;
     }
-    printf("Tweet %d deleted. There are now %d tweets left\n", tempTweetList->next->id, numTweets - 1);
-    tempTweetList->next = tempTweetList->next->next;
+    else {
+        tweetToDelete -= 1;
+        for (i = 0; i < tweetToDelete - 1; i++) {
+            tempTweetList = tempTweetList->next;
+        }
+
+        printf("Tweet %d deleted. ", tempTweetList->next->id);
+        tweetToDeletePtr = tempTweetList->next;
+        tempTweetList->next = tempTweetList->next->next;
+        numTweets -= 1;
+    }
+
+    if (numTweets == 0) {
+        printf("There are no tweets remaining\n");
+    } else {
+        printf("There are %d tweets remaining", numTweets);
+    }
+
+    free(tweetToDeletePtr);
 
     // *tweetList = tempTweetList;
 }
