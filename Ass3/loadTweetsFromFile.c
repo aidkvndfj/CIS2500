@@ -54,8 +54,6 @@ void loadTweetsFromFile(tweet** tweetList) {
             tempWord[strlen(tempWord) - 2] = '\0';
         }
 
-
-
         tempTweetList = *tweetList;
         if (tempTweetList == NULL) {
             *tweetList = newTweet;
@@ -67,4 +65,6 @@ void loadTweetsFromFile(tweet** tweetList) {
             tempTweetList->next = newTweet;
         }
     }
+
+    printf("Tweets imported!\n");
 }

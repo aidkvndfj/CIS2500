@@ -30,7 +30,7 @@ tweet* createTweet(tweet* tweetList) {
     if (tempTweet != NULL) {
         while(1) {
             if (newTweet->id == tempTweet->id) {
-                newTweet->id += rand() % 1000;
+                newTweet->id += (1 + rand() * (999 - 1) / RAND_MAX);
                 tempTweet = tweetList;
             } else if (tempTweet->next == NULL) {
                 break;

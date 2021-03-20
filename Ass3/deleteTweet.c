@@ -22,8 +22,13 @@ void deleteTweet(tweet** tweetList) {
         }
     }
 
+    if (numTweets == 0) {
+        printf("Error, there are no tweets to delete");
+        return;
+    }
+
     tempTweetList = *tweetList;
-    printf("Currently there are %d tweets.\n\n", numTweets);
+    printf("Currently there are %d tweets.\n", numTweets);
     printf("Which tweet do you wish to delete - enter a vlue between 1 and %d:", numTweets);
     scanf("%d", &tweetToDelete);
     if (tweetToDelete == 1) {

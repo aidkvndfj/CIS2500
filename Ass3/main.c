@@ -68,7 +68,6 @@ int main(void) {
                 printf("ERROR: %d IS A INVALID MENU CHOICE\n", menuChoice);
                 break;
         }
-        printf("----------------------------\n");
     } while (menuChoice != 8);
 
     free (tweetList);
