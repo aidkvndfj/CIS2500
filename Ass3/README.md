@@ -25,6 +25,7 @@ All sections of the assignment where completed and implemented into the program.
 5. Delete the nth tweet
 6. Save tweets to a file 
 7. Load tweets from a file
+8. Add node to list
 
 ## Program Limitations
 I was unable to determine how to remove the commas at the end of a tweets in the load tweets function. 
