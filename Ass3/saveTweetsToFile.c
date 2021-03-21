@@ -35,5 +35,4 @@ void saveTweetsToFile(tweet *tweetList) {
 
     // close file
     fclose(outFile);
-    free(tempTweetList);
 }

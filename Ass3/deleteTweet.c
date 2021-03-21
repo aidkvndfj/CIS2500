@@ -86,5 +86,4 @@ void deleteTweet(tweet **tweetList) {
 
     // free deleted tweet
     free(tweetToDeletePtr);
-    free(tempTweetList);
 }

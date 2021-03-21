@@ -7,7 +7,7 @@ void addNodeToList(tweet** tweetList, tweet* node) {
     // add tweet to list
     tempTweetList = *tweetList;
     // if the tweet list is empty, make it first tweet
-    if (*tweetList == NULL) {
+    if (tempTweetList == NULL) {
         *tweetList = node;
     }
     // otherwise loop to end of list, and append new tweet
@@ -18,5 +18,4 @@ void addNodeToList(tweet** tweetList, tweet* node) {
         tempTweetList->next = node;
     }
 
-    free(tempTweetList);
 }

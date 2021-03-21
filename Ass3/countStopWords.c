@@ -91,6 +91,4 @@ void countStopWords(tweet* tweetList) {
 
     // print the info.
     printf("Across %d tweets, %d stop words were found.\n", tweetCounter, stopWordCounter);
-
-    free(tempTweetList);
 }

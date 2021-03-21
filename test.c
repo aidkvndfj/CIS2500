@@ -2,26 +2,10 @@
 #include <stdlib.h>
 
 int main(void) {
-    int* ptr = NULL;
-    int i;
-    char ans = 'y';
-
-    i = 0;
-    while (ans == 'y') {
-        if (ptr == NULL) {
-            ptr = malloc(sizeof(int));
-            ptr[i] = i * 2;
-        }
-        else {
-            ptr = realloc(ptr, sizeof(int) * (i + 1));
-            ptr[i] = i * 2;
-        }
-
-        i++;
-
-        printf("Do you want to continue?");
-        scanf("%c", &ans);
-        getchar();
+    
+    for (int i = 0; i < 1000; i++) {
+        // printf("%d\n", (1 + rand() * (999 - 1) / RAND_MAX));
+        printf("%d\n", (1 + rand() % (999-1)));
     }
 
     return 0;

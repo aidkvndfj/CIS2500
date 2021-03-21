@@ -19,5 +19,4 @@ void displayTweets(tweet* tweetList) {
         printf("%d: Created by %s: %s\n", tempTweet->id, tempTweet->user, tempTweet->text);
     }
 
-    free(tempTweet);
 }

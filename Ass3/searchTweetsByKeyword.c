@@ -24,8 +24,9 @@ int searchTweetsByKeyword(tweet* tweetList) {
     // keyword = NULL;
 
     // Get keyword
-    fflush((stdin));
+    fflush(stdin);
     printf("Enter a keyword to search: ");
+    fgetc(stdin);
     scanf("%c", &currChar);
     keyword[length] = currChar;
 
@@ -72,6 +73,5 @@ int searchTweetsByKeyword(tweet* tweetList) {
     }
 
     free(keyword);
-    free(tempTweetList);
     return success;
 }

@@ -26,29 +26,27 @@ tweet* createTweet(tweet* tweetList) {
 
     newTweet->id += strlen(newTweet->text);
 
+
     // check id and make sure no other tweets have it
     if (tempTweet != NULL) {
         // loop until break;
         while (1) {
             // if the id is the same as another tweets, add some random number to it and go back to begining of list
             if (newTweet->id == tempTweet->id) {
-                newTweet->id += (1 + rand() * (999 - 1) / RAND_MAX);
+                newTweet->id += (1 + rand() % (999-1));
                 tempTweet = tweetList;
-            // if next tweet doesn't exist, break
             }
-            else if (tempTweet->next == NULL) {
-                break;
             // move to next tweet
-            }
-            else {
+            else if (tempTweet->next != NULL) {
                 tempTweet = tempTweet->next;
+            }
+            // if next tweet doesn't exist, break
+            else {
+                break;
             }
         }
     }
     printf("Your computer-generated userid is %d.\n", newTweet->id);
-
-    free(newTweet);
-    free(tempTweet);
 
     return newTweet;
 }
