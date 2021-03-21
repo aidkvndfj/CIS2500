@@ -55,7 +55,7 @@ void countStopWords(tweet* tweetList) {
                 // if the current word is not a end word char (space, comma, etc.)
                 if (!isEndWordChar(tempTweetList->text[i])) {
                     // add the char to a temp word
-                    tempWord[currLetter] = tempTweetList->text[i];
+                    tempWord[currLetter] = tolower(tempTweetList->text[i]);
                     currLetter++;
                 } else {
                     // loop thorugh the stop words

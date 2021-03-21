@@ -5,8 +5,12 @@
     end word chars. It will return 0(false) if it doesn't
 */
 int isEndWordChar(char character) {
-    if (character == ' ' || character == ',' || character == '\n' || character == '\0' || character == '.') {
-        return 1;
+    char lookFors[] = {" ,.?!;:(){}[]/|\\<>\'\"\n\0\t\r"};
+
+    for (int i = 0; i < strlen(lookFors); i++) {
+        if (lookFors[i] == character) {
+            return 1;
+        }
     }
 
     return 0;

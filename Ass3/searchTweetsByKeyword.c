@@ -1,7 +1,8 @@
 #include "headerA3.h"
 
 int searchTweetsByKeyword(tweet* tweetList) {
-    char keyword[20];
+    char *keyword;
+    char currChar;
     int length;
     int i;
     int j;
@@ -9,12 +10,25 @@ int searchTweetsByKeyword(tweet* tweetList) {
     tweet* tempTweetList;
 
     tempTweetList = tweetList;
+    length = 0;
+
+    keyword = malloc(sizeof(char));
+    // keyword = NULL;
 
     // Get keyword
+    fflush((stdin));
     printf("Enter a keyword to search: ");
-    scanf("%s", keyword);
+    scanf("%c", &currChar);
+    keyword[length] = currChar;
 
-    length = strlen(keyword);
+    // loop untill newchar, add chars to string
+    while (currChar != '\n') {
+        length++;
+        keyword = realloc(keyword, sizeof(char) * (length + 1));
+        scanf("%c", &currChar);
+        keyword[length] = currChar;
+    }
+    keyword[length] = '\0';
 
     // make sure the list isn't empty
     if (tempTweetList != NULL) {
@@ -51,5 +65,6 @@ int searchTweetsByKeyword(tweet* tweetList) {
         }
     }
 
+    free(keyword);
     return 0;
 }
