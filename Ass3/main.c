@@ -63,7 +63,7 @@ int main(void) {
                 break;
 
             default:
-                // If one of the above options is not slected, print a
+                // If one of the above options is not selected, print a
                 // error informing the user that the option in invalid.
                 printf("ERROR: %d IS A INVALID MENU CHOICE\n", menuChoice);
                 break;
@@ -71,7 +71,7 @@ int main(void) {
     } while (menuChoice != 8);
 
     // free memory
-    free (tweetList);
+    free(tweetList);
 
     return 0;
 }

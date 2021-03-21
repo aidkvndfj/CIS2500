@@ -1,42 +1,50 @@
 #include "headerA3.h"
 
-void deleteTweet(tweet** tweetList) {
+void deleteTweet(tweet **tweetList) {
     int numTweets;
     int tweetToDelete;
     int i;
     tweet *tempTweetList;
     tweet *tweetToDeletePtr;
 
-    // set temp list to the tweet lsit
-    tempTweetList = *tweetList;    
+    // set temp list to the tweet list
+    tempTweetList = *tweetList;
     numTweets = 0;
     tweetToDelete = 0;
 
+    // if there are no tweets, exit func
+    if (*tweetList == NULL) {
+        printf("ERROR: there are no tweets to delete\n");
+        return;
+    }
+
     // loop through the tweets and count how many there are.
     if (tempTweetList != NULL) {
-        // loop untill break
+        // loop until break
         while (1) {
             numTweets++;
             // if there not another tweet, break out, otherwise move on
             if (tempTweetList->next == NULL) {
                 break;
-            } else {
+            }
+            else {
                 tempTweetList = tempTweetList->next;
             }
         }
     }
 
-    // if there are no tweets, exit func
-    if (numTweets == 0) {
-        printf("Error, there are no tweets to delete");
-        return;
-    }
-
     // get the tweet to delete
     tempTweetList = *tweetList;
     printf("Currently there are %d tweets.\n", numTweets);
-    printf("Which tweet do you wish to delete - enter a vlue between 1 and %d:", numTweets);
+    printf("Which tweet do you wish to delete - enter a value between 1 and %d: ", numTweets);
     scanf("%d", &tweetToDelete);
+
+    // make sure tweet is within range
+    while (tweetToDelete < 1 || tweetToDelete > numTweets) {
+        printf("ERROR: number \"%d\" is not within the range.\n", tweetToDelete);
+        printf("Which tweet do you wish to delete - enter a value between 1 and %d: ", numTweets);
+        scanf("%d", &tweetToDelete);
+    }
 
     // if they want to delete the first tweets
     if (tweetToDelete == 1) {
@@ -51,7 +59,7 @@ void deleteTweet(tweet** tweetList) {
     else {
         // remove 1 from tweettodelete so we are looking at correct index
         tweetToDelete -= 1;
-        // loop untill we are at the tweet before the one to delete
+        // loop until we are at the tweet before the one to delete
         for (i = 0; i < tweetToDelete - 1; i++) {
             tempTweetList = tempTweetList->next;
         }
@@ -68,10 +76,15 @@ void deleteTweet(tweet** tweetList) {
     // if there are 0 tweets, say so, otherwise print tweets rmaining
     if (numTweets == 0) {
         printf("There are no tweets remaining\n");
-    } else {
-        printf("There are %d tweets remaining", numTweets);
+    }
+    else if (numTweets == 1) {
+        printf("There is %d tweet remaining\n", numTweets);
+    }
+    else {
+        printf("There are %d tweets remaining\n", numTweets);
     }
 
     // free deleted tweet
     free(tweetToDeletePtr);
+    free(tempTweetList);
 }

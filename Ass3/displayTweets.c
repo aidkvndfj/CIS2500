@@ -18,4 +18,6 @@ void displayTweets(tweet* tweetList) {
         //print the final tweet
         printf("%d: Created by %s: %s\n", tempTweet->id, tempTweet->user, tempTweet->text);
     }
+
+    free(tempTweet);
 }

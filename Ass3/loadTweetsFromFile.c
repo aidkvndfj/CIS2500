@@ -13,7 +13,7 @@ void loadTweetsFromFile(tweet** tweetList) {
     // make sure stream in clear
     fflush(stdin);
 
-    // get the filename 
+    // get the filename
     printf("Enter a filename to load from: ");
     scanf("%s", fileName);
 
@@ -24,9 +24,9 @@ void loadTweetsFromFile(tweet** tweetList) {
     if (inFile == NULL) {
         printf("ERROR: CANNOT READ FILE %s", fileName);
         return;
-    }   
+    }
 
-    // go untill end of file
+    // go until end of file
     while (!feof(inFile)) {
         // make a new tweet and set it to null
         newTweet = malloc(sizeof(tweet));
@@ -41,7 +41,7 @@ void loadTweetsFromFile(tweet** tweetList) {
 
         // get the user name and write it to tweets user
         i = 0;
-        while(tempWord[currLetter] != ',') {
+        while (tempWord[currLetter] != ',') {
             newTweet->user[i] = tempWord[currLetter];
             currLetter++;
             i++;
@@ -61,6 +61,7 @@ void loadTweetsFromFile(tweet** tweetList) {
     }
 
     free(newTweet);
+    fclose(inFile);
 
     // say tweet import was a success.
     printf("Tweets imported!\n");
