@@ -45,5 +45,7 @@ tweet* createTweet(tweet* tweetList) {
     }
     printf("Your computer-generated userid is %d.\n", newTweet->id);
 
+    free(newTweet);
+
     return newTweet;
 }

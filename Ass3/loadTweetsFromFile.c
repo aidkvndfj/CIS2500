@@ -60,6 +60,8 @@ void loadTweetsFromFile(tweet** tweetList) {
         addNodeToList(tweetList, newTweet);
     }
 
+    free(newTweet);
+
     // say tweet import was a success.
     printf("Tweets imported!\n");
 }
