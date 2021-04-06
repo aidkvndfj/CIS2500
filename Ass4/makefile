@@ -1,8 +1,8 @@
 COMPILE_FLAGS = -Wall -std=c99
 O_FILES = testA4.o helper.o queueFunctions.o miscFunctions.o
 
-tweetManager: ${O_FILES}
-	gcc ${COMPILE_FLAGS} ${O_FILES} -o tweetManager
+testA4: ${O_FILES}
+	gcc ${COMPILE_FLAGS} ${O_FILES} -o testA4
 
 testA4.o: testA4.c headerA4.h
 	gcc ${COMPILE_FLAGS} -c testA4.c

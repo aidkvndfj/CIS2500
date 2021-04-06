@@ -1,5 +1,7 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct microtweet {
     int id;
@@ -7,6 +9,12 @@ typedef struct microtweet {
     char text[141];
     struct microtweet *next;
 } tweet;
+
+typedef struct queueStruct {
+    int count;
+    tweet* front;
+    tweet* rear;
+} queue;
 
 void enqueue(tweet **head, tweet **tail, tweet *node);
 void dequeue(tweet **head, tweet **tail);
