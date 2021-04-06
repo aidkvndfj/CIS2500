@@ -17,4 +17,4 @@ miscFunctions.o: miscFunctions.c headerA4.h
 	gcc ${COMPILE_FLAGS} -c miscFunctions.c
 
 clean:
-	rm ${O_FILES} tweetManager
+	rm ${O_FILES} testA4

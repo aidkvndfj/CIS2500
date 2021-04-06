@@ -1,11 +1,5 @@
 #include "helper.h"
 
-void InitializeQueue(queue *currQueue) {
-    currQueue->count = 0;
-    currQueue->front = NULL;
-    currQueue->rear = NULL;
-}
-
 void FreeQueue(tweet *head) {
     tweet *tempTweet;
     while (head != NULL) {
@@ -15,30 +9,30 @@ void FreeQueue(tweet *head) {
     }
 }
 
-void InitializeTweet(tweet *currTweet) {
-    currTweet->id = 0;
-    strcpy(currTweet->user, "");
-    strcpy(currTweet->text, "");
-    currTweet->next = NULL;
+void InsertAtBegining(tweet **head, tweet **tail, tweet *newTweet) {
+    if (isEmpty(*head)) {
+        *head = *tail = newTweet;
+    }
+    else {
+        newTweet->next = *head;
+        *head = newTweet;
+    }
 }
 
-tweet* Pop(tweet **head, tweet **tail) {
-    tweet *tempHead;
-    tweet *returnTweet;
+void SwapTweets(tweet *tweet1, tweet *tweet2) {
+    int tempID;
+    char tempUser[51];
+    char tempText[141];
 
-    printf("Set Return\n");
-    returnTweet = *tail;
+    tempID = tweet1->id;
+    strcpy(tempUser, tweet1->user);
+    strcpy(tempText, tweet1->text);
 
-    printf("WHILE\n");
-    while (tempHead->next != NULL) {
-        printf("WHILE\n");
-        tempHead = tempHead->next;
-    }
-    // while (tempHead->next->next != NULL || tempHead->next != NULL) {
-    //     printf("WHILE\n");
-    //     tempHead = tempHead->next;
-    // }
+    tweet1->id = tweet2->id;
+    strcpy(tweet1->user, tweet2->user);
+    strcpy(tweet1->text, tweet2->text);
 
-    printf("REturn\n");
-    return returnTweet;
+    tweet2->id = tempID;
+    strcpy(tweet2->user, tempUser);
+    strcpy(tweet2->text, tempText);
 }

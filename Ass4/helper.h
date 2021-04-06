@@ -1,9 +1,9 @@
 #include "headerA4.h"
 
-void InitializeQueue(queue *currQueue);
 
 void FreeQueue(tweet *currTweet);
 
-void InitializeTweet(tweet *currTweet);
 
-tweet* Pop(tweet **head, tweet **tail);
+void InsertAtBegining(tweet **head, tweet **tail, tweet *newTweet);
+
+void SwapTweets(tweet *tweet1, tweet *tweet2);
