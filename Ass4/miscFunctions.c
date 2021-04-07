@@ -2,8 +2,8 @@
 
 void sortID(tweet** head, tweet** tail) {
     int swapped;
-    tweet *tempHead;
-    tweet *lastTweet;
+    tweet* tempHead;
+    tweet* lastTweet;
 
     lastTweet = NULL;
 
@@ -16,7 +16,7 @@ void sortID(tweet** head, tweet** tail) {
     // go through the queue until all tweets have been checked at least once that they are in the right order.
     do {
         // set swapped to 0 and the temp head to actual head.
-        swapped = 0;    
+        swapped = 0;
         tempHead = *head;
         // while the next tweet isn't the last tweet sorted tweet.
         while (tempHead->next != lastTweet) {
@@ -30,7 +30,7 @@ void sortID(tweet** head, tweet** tail) {
         }
         // set the last sorted tweet to the current tweet/temp head.
         lastTweet = tempHead;
-    } while(swapped);
+    } while (swapped);
 }
 
 void reverse(tweet** head, tweet** tail) {

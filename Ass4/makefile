@@ -1,4 +1,4 @@
-COMPILE_FLAGS = -Wall -std=c99
+COMPILE_FLAGS = -Wall -std=c99 -ggdb3
 O_FILES = testA4.o helper.o queueFunctions.o miscFunctions.o
 
 testA4: ${O_FILES}

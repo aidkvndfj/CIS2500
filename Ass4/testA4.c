@@ -1,7 +1,7 @@
 // #include "headerA4.h"
 #include "helper.h"
 
-int main(void) {    
+int main(void) {
     tweet *tweetHead;
     tweet *tweetTail;
 
@@ -60,78 +60,230 @@ int main(void) {
     tweet *testNode8;
     testNode8 = malloc(sizeof(tweet));
     testNode8->id = 428;
-    strcpy(testNode8->user, "Eric8");
+    strcpy(testNode8->user, "Aether");
     strcpy(testNode8->text, "This is a test tweet.8");
     testNode8->next = NULL;
 
     tweet *testNode9;
     testNode9 = malloc(sizeof(tweet));
     testNode9->id = 429;
-    strcpy(testNode9->user, "Eric9");
+    strcpy(testNode9->user, "Paimon");
     strcpy(testNode9->text, "This is a test tweet.9");
     testNode9->next = NULL;
 
+    tweet *testNode10;
+    testNode10 = malloc(sizeof(tweet));
+    testNode10->id = 4210;
+    strcpy(testNode10->user, "Lumine");
+    strcpy(testNode10->text, "This is a test tweet.10");
+    testNode10->next = NULL;
+
+    tweet *testNode11;
+    testNode11 = malloc(sizeof(tweet));
+    testNode11->id = 4211;
+    strcpy(testNode11->user, "Eric11");
+    strcpy(testNode11->text, "This is a test tweet.11");
+    testNode11->next = NULL;
+
+    /*
+    tweet *testNode12;
+    testNode12 = malloc(sizeof(tweet));
+    testNode12->id = 4212;
+    strcpy(testNode12->user, "Eric12");
+    strcpy(testNode12->text, "This is a test tweet.12");
+    testNode12->next = NULL;
+
+    tweet *testNode13;
+    testNode13 = malloc(sizeof(tweet));
+    testNode13->id = 4213;
+    strcpy(testNode13->user, "Eric13");
+    strcpy(testNode13->text, "This is a test tweet.13");
+    testNode13->next = NULL;
+
+    tweet *testNode14;
+    testNode14 = malloc(sizeof(tweet));
+    testNode14->id = 4214;
+    strcpy(testNode14->user, "Eric14");
+    strcpy(testNode14->text, "This is a test tweet.14");
+    testNode14->next = NULL;
+
+    tweet *testNode15;
+    testNode15 = malloc(sizeof(tweet));
+    testNode15->id = 4215;
+    strcpy(testNode15->user, "Eric15");
+    strcpy(testNode15->text, "This is a test tweet.15");
+    testNode15->next = NULL;
+
+    tweet *testNode16;
+    testNode16 = malloc(sizeof(tweet));
+    testNode16->id = 4216;
+    strcpy(testNode16->user, "Eric16");
+    strcpy(testNode16->text, "This is a test tweet.16");
+    testNode16->next = NULL;
+
+    tweet *testNode17;
+    testNode17 = malloc(sizeof(tweet));
+    testNode17->id = 4217;
+    strcpy(testNode17->user, "Eric17");
+    strcpy(testNode17->text, "This is a test tweet.17");
+    testNode17->next = NULL;
+
+    tweet *testNode18;
+    testNode18 = malloc(sizeof(tweet));
+    testNode18->id = 4218;
+    strcpy(testNode18->user, "Eric18");
+    strcpy(testNode18->text, "This is a test tweet.18");
+    testNode18->next = NULL;
+    */
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nQueue Test 1\n");
     printf("QUEUE\n");
     enqueue(&tweetHead, &tweetTail, testNode3);
-    enqueue(&tweetHead, &tweetTail, testNode2);
-    enqueue(&tweetHead, &tweetTail, testNode1);
-    
-    printf("PRINT\n");
-    printQueue(tweetHead);
-    
-    printf("DEQUEUE\n");
-    dequeue(&tweetHead, &tweetTail);
-    
-    printf("PRINT\n");
-    printQueue(tweetHead);
-    
-    printf("DEQUEUE\n");
-    dequeue(&tweetHead, &tweetTail);
 
     printf("PRINT\n");
     printQueue(tweetHead);
-    
-    printf("DEQUEUE\n");
-    dequeue(&tweetHead, &tweetTail);
-    
-    printf("PRINT\n");
-    printQueue(tweetHead);
-    
-    printf("DEQUEUE\n");
-    dequeue(&tweetHead, &tweetTail);
-    
-    printf("PRINT\n");
-    printQueue(tweetHead);
 
+    printf("\nIs Empty Test 1\n");
+    printf("ISEMPTY\n");
+    printf("Is empty expected: 0, Actual: %d", isEmpty(tweetHead));
 
+    printf("\nQueue Test 2\n");
     printf("QUEUE\n");
-    enqueue(&tweetHead, &tweetTail, testNode9);
-    enqueue(&tweetHead, &tweetTail, testNode7);
-    enqueue(&tweetHead, &tweetTail, testNode8);
+    enqueue(&tweetHead, &tweetTail, testNode1);
+    enqueue(&tweetHead, &tweetTail, testNode2);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nDequeue Test 1\n");
+    printf("DEQUEUE\n");
+    dequeue(&tweetHead, &tweetTail);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nDequeue Test 2\n");
+    printf("DEQUEUE\n");
+    dequeue(&tweetHead, &tweetTail);
+    dequeue(&tweetHead, &tweetTail);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nDequeue Test 3\n");
+    printf("DEQUEUE\n");
+    dequeue(&tweetHead, &tweetTail);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nIs Empty Test 2\n");
+    printf("ISEMPTY\n");
+    printf("Is empty expected: 1, Actual: %d", isEmpty(tweetHead));
+
+    printf("\nQueue Test 3\n");
+    printf("QUEUE\n");
+    enqueue(&tweetHead, &tweetTail, testNode5);
     enqueue(&tweetHead, &tweetTail, testNode6);
     enqueue(&tweetHead, &tweetTail, testNode4);
-    enqueue(&tweetHead, &tweetTail, testNode5);
+    enqueue(&tweetHead, &tweetTail, testNode7);
 
     printf("PRINT\n");
     printQueue(tweetHead);
 
-    printf("SORT NAME\n");
-    sortUsername(&tweetHead, &tweetTail);
-    // printf("SORT ID\n");
-    // sortID(&tweetHead, &tweetTail);
-
-    printf("PRINT\n");
-    printQueue(tweetHead);
-
+    printf("\nReverse Test 1\n");
     printf("REVERSE\n");
     reverse(&tweetHead, &tweetTail);
 
     printf("PRINT\n");
     printQueue(tweetHead);
 
-    FreeQueue(tweetHead);
-    // printf("Done\n");
+    printf("\nSort ID Test 1.\n");
+    printf("SORT ID\n");
+    sortID(&tweetHead, &tweetTail);
 
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nSort ID Test 2.\n");
+    printf("SORT ID\n");
+    sortID(&tweetHead, &tweetTail);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nReverse Test 2\n");
+    printf("REVERSE\n");
+    reverse(&tweetHead, &tweetTail);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nSort ID Test 3.\n");
+    printf("DEQUEUE\n");
+    dequeue(&tweetHead, &tweetTail);
+    dequeue(&tweetHead, &tweetTail);
+    dequeue(&tweetHead, &tweetTail);
+    dequeue(&tweetHead, &tweetTail);
+
+    printf("SORT ID\n");
+    sortID(&tweetHead, &tweetTail);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nIs Empty Test 3\n");
+    printf("ISEMPTY\n");
+    printf("Is empty expected: 1, Actual: %d", isEmpty(tweetHead));
+
+    printf("\nSort Name Test 1\n");
+    printf("QUEUE\n");
+    enqueue(&tweetHead, &tweetTail, testNode9);
+    enqueue(&tweetHead, &tweetTail, testNode8);
+    enqueue(&tweetHead, &tweetTail, testNode10);
+    enqueue(&tweetHead, &tweetTail, testNode11);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("SORT NAME\n");
+    sortUsername(&tweetHead, &tweetTail);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nSort Name Test 2.\n");
+    printf("SORT NAME\n");
+    sortUsername(&tweetHead, &tweetTail);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nReverse Test 3\n");
+    printf("REVERSE\n");
+    reverse(&tweetHead, &tweetTail);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    printf("\nSort Name Test 3.\n");
+    printf("DEQUEUE\n");
+    dequeue(&tweetHead, &tweetTail);
+    dequeue(&tweetHead, &tweetTail);
+    dequeue(&tweetHead, &tweetTail);
+    dequeue(&tweetHead, &tweetTail);
+
+    printf("SORT NAME\n");
+    sortUsername(&tweetHead, &tweetTail);
+
+    printf("PRINT\n");
+    printQueue(tweetHead);
+
+    FreeQueue(tweetHead);
+    printf("Completed Program Testing\n");
 
     return 0;
 }
